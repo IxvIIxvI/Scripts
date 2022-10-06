@@ -1,4 +1,12 @@
 
+--PrisonLife
+if game.PlaceId == 155615604 then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/IxvIIxvI/Scripts/main/PrisonLifeX", true))()
+end
+
+--NinjaLegends
+if game.PlaceId == 3956818381 then
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/IxvIIxvI/Scripts/main/NinjaLegendsX', true))()
+end
 
 
-loadstring(game:HttpGet('https://raw.githubusercontent.com/IxvIIxvI/Scripts/main/NinjaLegendsX', true))()
