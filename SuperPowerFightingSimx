@@ -1,0 +1,148 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Super Power X", "Ocean")
+
+
+--Auto Clicker
+local AutoClickerTab = Window:NewTab("AutoClicker")
+
+--Main Section of autocliceker
+local AutoClickerSection = AutoClickerTab:NewSection("AutoPunch")
+
+
+local AutoPunch = AutoClickerSection:NewToggle("AutoPunch", "yes", function(state)
+    if state then
+        getgenv().AutoPunch = true;
+        while wait(AutoPunchDelay) do
+            if getgenv().AutoPunch == true then
+                game:GetService("ReplicatedStorage").Events.Train:FireServer("Strength")
+            end
+        end
+    else
+        getgenv().AutoPunch = false;
+    end
+end)
+AutoPunchDelay = AutoClickerSection:NewSlider("AutoPunch Delay", "Delay", 20, 0, function(val) -- 500 (MaxValue) | 0 (MinValue)
+    AutoPunchDelay = val
+end)
+
+--Main Section of AutoClick/Endurance
+local EnduranceSection = AutoClickerTab:NewSection("Endurance")
+
+local AutoEndurance = EnduranceSection:NewToggle("AutoEndurance", "yes", function(state)
+    if state then
+        getgenv().AutoEndurance = true;
+        while wait(AutoEnduranceDelay) do
+            if getgenv().AutoEndurance == true then
+                game:GetService("ReplicatedStorage").Events.Train:FireServer("Endurance")
+            end
+        end
+    else
+        getgenv().AutoEndurance = false;
+    end
+end)
+AutoEnduranceDelay = EnduranceSection:NewSlider("Endurance Delay", "Delay", 20, 0, function(val) -- 500 (MaxValue) | 0 (MinValue)
+    AutoEnduranceDelay = val
+end)
+
+--Main Section of AutoClick/Endurance
+local PsychicSection = AutoClickerTab:NewSection("Psychic")
+
+local AutoPsychic = PsychicSection:NewToggle("AutoPsychic", "yes", function(state)
+    if state then
+        getgenv().AutoPsychic = true;
+        while wait(AutoPsychicDelay) do
+            if getgenv().AutoPsychic == true then
+                game:GetService("ReplicatedStorage").Events.Train:FireServer("Psychic")
+            end
+        end
+    else
+        getgenv().AutoPsychic = false;
+    end
+end)
+AutoPsychicDelay = PsychicSection:NewSlider("Psychic Delay", "Delay", 20, 0, function(val) -- 500 (MaxValue) | 0 (MinValue)
+    AutoPsychicDelay = val
+end)
+
+
+--Other
+local OtherTab = Window:NewTab("Other")
+
+--Main Section of Other
+local OtherSection = OtherTab:NewSection("Gift")
+
+
+local Gift = OtherSection:NewButton("FreeGift", "Yes", function()
+    game:GetService("ReplicatedStorage").Events.DailyDeal:FireServer("FreeGift")
+end)
+
+
+local RunSection = OtherTab:NewSection("Run")
+
+local Run = RunSection:NewButton("Run", "Yes", function()
+    game:GetService("ReplicatedStorage").Events.UseSkill:FireServer("RunToggle")
+end)
+
+--LocalPlayer
+local LocalPlayerTab = Window:NewTab("LocalPlayer")
+
+--Main Section of LocalPlayer
+local SpeedSection = LocalPlayerTab:NewSection("Speed")
+
+
+local Speed = SpeedSection:NewSlider("Speed", "Make You Walk Faster", 500, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+local HighJumpSection = LocalPlayerTab:NewSection("HighJump")
+
+local HighJump = HighJumpSection:NewSlider("Jump Power", "Make You jump higher", 500, 50, function(d) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = d
+end)
+
+local GravitySection = LocalPlayerTab:NewSection("Gravity")
+
+local Gravity = GravitySection:NewSlider("Gravity", "Changes Gravity", 1, 192.6, function(b) -- 500 (MaxValue) | 0 (MinValue)
+    game.workspace.Gravity = b
+end)
+
+
+
+
+
+--Tp
+local TpTab = Window:NewTab("Teleport")
+
+--Main Section of Tp
+local TpSection = TpTab:NewSection("Spawn")
+
+local Spawn = TpSection:NewButton("Spawn", "Yes", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-412.195892, 70.8408051, -107.51004, 0.999774933, -2.84062587e-08, 0.0212157201, 2.95667579e-08, 1, -5.43862733e-08, -0.0212157201, 5.50013119e-08, 0.999774933)
+end)
+
+
+local PortalSection = TpTab:NewSection("Portals")
+
+local Portal = PortalSection:NewButton("Portals", "Goest To The Portals", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-533.973145, 70.2001724, -669.158752, 0.012050272, 1.00935274e-07, 0.999927402, -4.99844752e-08, 1, -1.0034023e-07, -0.999927402, -4.87717173e-08, 0.012050272)
+end)
+
+
+local GymSection = TpTab:NewSection("Gym")
+
+
+local Gym = GymSection:NewButton("Gym", "Goest To The Gym", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-739.222351, 70.4327164, -367.792755, -0.0165193137, 1.97405399e-08, 0.999863565, -4.44920296e-08, 1, -2.04783124e-08, -0.999863565, -4.48242474e-08, -0.0165193137)
+end)
+
+local LibarySection = TpTab:NewSection("Library")
+
+local Libary = LibarySection:NewButton("Library", "Goest To The Library", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-854.716675, 70.2248535, -435.266144, 0.00840512849, 4.21865565e-08, 0.999964654, 2.98609102e-08, 1, -4.24390407e-08, -0.999964654, 3.02165617e-08, 0.00840512849)
+end)
+
+
+
+
+
+
+--setclipboard(tostring(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame))
